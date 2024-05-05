@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+
+		.button-nav {
+			display: inline-block; /* 使按钮内联显示，方便设置宽度 */
+			width: 170px; /* 固定按钮宽度，根据需要调整 */
+			padding: 10px 0; /* 垂直填充，保持按钮高度一致 */
+			border: 2px solid #89c967; /* 浅绿色边框 */
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			color: #89c967; /* 浅绿色文字 */
+			background-color: transparent; /* 透明背景 */
+			outline: none;
+			transition: all 0.3s ease;
+			text-align: center; /* 文本居中 */
+			position: relative;
+			bottom: 100px;
+		  }
+		  
+		  .button-nav:hover {
+			background-color: rgba(137, 201, 103, 0.2); /* 鼠标悬停时的背景色 */
+		  }
+		  
+		  /* 箭头样式 */
+		  .button-nav::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%) rotate(45deg);
+			border-style: solid;
+			border-width: 1px 1px 0 0;
+			border-color: #89c967 transparent transparent transparent;
+		  }
+		  
+		  /* 上一页按钮的箭头 */
+		  .button-nav.prev::after {
+			right: 20px; /* 根据按钮宽度和设计调整箭头位置 */
+		  }
+		  
+		  /* 下一页按钮的箭头 */
+		  .button-nav.next::after {
+			left: 20px; /* 根据按钮宽度和设计调整箭头位置 */
+			transform: translateY(-50%) rotate(225deg); /* 调整箭头方向 */
+		  }
+		  
+		  /* 确保箭头在按钮文本之后显示 */
+		  .button-nav span {
+			position: relative;
+			z-index: 1;
+		  }
+
+		/* 上一页按钮的定位 */
+		.button-nav.prev {
+			left: 100px; /* 根据需要调整距离左边的距离 */
+		}
+		
+		/* 下一页按钮的定位 */
+		.button-nav.next {
+			left: 200px; /* 根据需要调整距离右边的距离 */
+		}
+
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+	
+</head>
+
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+			
+				<span class="space"/>遇到你之后，我经常觉得自己真的好幸运好幸福🌟，试问有什么是比“我深爱的人也深爱着我”更幸福的呢？我非常珍惜你啊，你是我的第一位爱人，因为在你地方我第一次体会到什么是“爱”以及应该如何表达爱，你真的是一个非常擅长表达爱的人，我也经常跟你提起说“我好幸福，一直在被爱”，我也在用我的方式表达我对你的爱❤️，你感受到了吗？<br />
+				<span class="space"/>对你的爱，已经不局限于“喜欢”了，更多的是“包容”，就像那天晚上你看到那句“我们纵横交错，最后回到原点”破防之后，我真的很想抱抱你🫂，第二天你在地铁站蹲着等我的时候哭了，我好难过，我知道你肯定想骂自己昨晚为什么这么矫情，但是其实我早就习惯了包容你，因为没有“矫情”的你，又怎么会有一个这么会表达爱的你呢？这都是感性的王文馨，我们要接受自己的所有，没有什么是绝对对或者绝对错的，做自己是最重要的，你很棒、很优秀，知道吗？<br />
+				
+			</div>
+
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						一直爱你呀我的宝～
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Love u forever and ever.<br/>
+						<div class="signature">- 你亲爱的十二</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<button class="button-nav prev" onclick="goToPage(2)">
+			<span> << Previous Page</span>
+		  </button>
+		
+		<button class="button-nav next" onclick="goToPage(4)">
+			<span>Next Page >> </span>
+		</button>
+	
+	</div>
+
+	<script type="text/javascript">
+		function goToPage(pageNumber) {
+			var pageName = "index" + pageNumber + ".html";
+			window.location.href = pageName;
+		}
+	</script>
+
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2024,0,30);
+		together.setHours(21);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+
+
+</body>
+</html>

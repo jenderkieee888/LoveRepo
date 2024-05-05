@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+		.button-nav {
+			display: inline-block; /* 使按钮内联显示，方便设置宽度 */
+			width: 170px; /* 固定按钮宽度，根据需要调整 */
+			padding: 10px 0; /* 垂直填充，保持按钮高度一致 */
+			border: 2px solid #89c967; /* 浅绿色边框 */
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			color: #89c967; /* 浅绿色文字 */
+			background-color: transparent; /* 透明背景 */
+			outline: none;
+			transition: all 0.3s ease;
+			text-align: center; /* 文本居中 */
+			position: relative;
+			bottom: 100px;
+		  }
+		  
+		  .button-nav:hover {
+			background-color: rgba(137, 201, 103, 0.2); /* 鼠标悬停时的背景色 */
+		  }
+		  
+		  /* 箭头样式 */
+		  .button-nav::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%) rotate(45deg);
+			border-style: solid;
+			border-width: 1px 1px 0 0;
+			border-color: #89c967 transparent transparent transparent;
+		  }
+		  
+		  /* 上一页按钮的箭头 */
+		  .button-nav.prev::after {
+			right: 20px; /* 根据按钮宽度和设计调整箭头位置 */
+		  }
+		  
+		  /* 下一页按钮的箭头 */
+		  .button-nav.next::after {
+			left: 20px; /* 根据按钮宽度和设计调整箭头位置 */
+			transform: translateY(-50%) rotate(225deg); /* 调整箭头方向 */
+		  }
+		  
+		  /* 确保箭头在按钮文本之后显示 */
+		  .button-nav span {
+			position: relative;
+			z-index: 1;
+		  }
+
+		/* 上一页按钮的定位 */
+		.button-nav.prev {
+			left: 100px; /* 根据需要调整距离左边的距离 */
+		}
+		
+		/* 下一页按钮的定位 */
+		.button-nav.next {
+			left: 373px; /* 根据需要调整距离右边的距离 */
+		}
+
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+	
+</head>
+
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">Dear 宝，</span><br />
+				<span class="space"/><span class="comments">耶耶耶！截止这周四（5.9），我们就认识一百天啦！！！我们度过了我们的第一个一百天诶！！！🎉🎉🎉</span><br />
+				<span class="space"/><span class="comments">还是先骚瑞啊宝，一封回信一直拖到现在，其实也是想找一个比较特别的时间点给你，认识两个月的时候你给我写了一封信，然后我就在想要不就认识一百天的时候把我写的回信给你，让你等太久啦骚瑞～</span><br />
+				<span class="space"/><span class="comments">哦对了，这次回信的形式也有点特别哦，带你体验一下程序员🧑‍💻的浪漫！！！</span><br />
+
+			</div>
+
+
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						一直爱你呀我的宝～
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Love u forever and ever.<br/>
+						<div class="signature">- 你亲爱的十二</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button class="button-nav next" onclick="goToPage(2)">
+			<span>Next Page >> </span>
+		</button>
+	
+	</div>
+
+	<script type="text/javascript">
+		function goToPage(pageNumber) {
+			var pageName = "index" + pageNumber + ".html";
+			window.location.href = pageName;
+		}
+	</script>
+
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2024,0,30);
+		together.setHours(21);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+
+
+</body>
+</html>
